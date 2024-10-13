@@ -19,12 +19,12 @@ public interface EmployeeController {
     @GetMapping("/companies/{companyName}/employees/{employeeName}")
     ResponseEntity<EmployeeResponse> getEmployeeByName(@PathVariable String companyName, @PathVariable String employeeName);
 
-    @PostMapping("/companies/{companyName}/employees")
+    @PutMapping("/companies/{companyName}/employees")
     ResponseEntity<String> addEmployee(@PathVariable String companyName, EmployeeCreateRequest employeeCreateRequest);
 
     @DeleteMapping("/companies/{companyName}/employees/{employeeName}")
     ResponseEntity<String> deleteEmployee(@PathVariable String companyName, @PathVariable String employeeName);
 
-    @PutMapping("/companies/{companyName}/employees/{employeeName}")
+    @PatchMapping("/companies/{companyName}/employees/{employeeName}")
     ResponseEntity<String> updateEmployee(@PathVariable String companyName, @PathVariable String employeeName, EmployeeUpdateRequest employeeUpdateRequest);
 }
