@@ -30,17 +30,17 @@ public class CloudGatewayApplication {
                 .routes()
                 .route("companies", r -> r
                         .path(
-                                "/companies",
-                                "/companies/{companyName}")
+                                "/api/companies",
+                                "/api/companies/{companyName}")
                         .uri(companiesUri))
                 .route("employees", r -> r
                         .path(
-                                "/companies/employees",
-                                "/companies/{companyName}/employees",
-                                "/companies/{companyName}/employees/{employeeName}",
-                                "/companies/{companyName}/employees",
-                                "/companies/{companyName}/employees/{employeeName}",
-                                "/companies/{companyName}/employees/{employeeName}")
+                                "/api/companies/employees",
+                                "/api/companies/{companyName}/employees",
+                                "/api/companies/{companyName}/employees/{employeeName}",
+                                "/api/companies/{companyName}/employees",
+                                "/api/companies/{companyName}/employees/{employeeName}",
+                                "/api/companies/{companyName}/employees/{employeeName}")
                         .uri(employeesUri))
                 .build();
     }
