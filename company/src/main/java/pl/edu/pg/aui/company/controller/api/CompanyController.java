@@ -19,7 +19,7 @@ public interface CompanyController {
     ResponseEntity<String> addCompany(CompanyCreateRequest companyCreateRequest);
 
     @DeleteMapping("/companies/{companyName}")
-    ResponseEntity<String> deleteCompany(@PathVariable String companyName);
+    ResponseEntity<Void> deleteCompany(@PathVariable String companyName);
 
     @PutMapping("/companies/{companyName}")
     ResponseEntity<String> updateCompany(@PathVariable String companyName, @RequestBody CompanyUpdateRequest companyUpdateRequest);

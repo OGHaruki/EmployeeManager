@@ -62,13 +62,13 @@ public class CompanyControllerImpl implements CompanyController {
     }
 
     @Override
-    public ResponseEntity<String> deleteCompany(String companyName) {
+    public ResponseEntity<Void> deleteCompany(String companyName) {
         Company company = companyService.getCompanyByName(companyName).orElse(null);
         if(company == null) {
             return ResponseEntity.notFound().build();
         } else {
             companyService.deleteCompany(company.getUuid());
-            return ResponseEntity.ok("Company deleted successfully!");
+            return ResponseEntity.noContent().build();
         }
     }
 
