@@ -12,6 +12,7 @@
         <tr *ngFor="let company of companies">
           <td>{{ company.name }}</td>
           <td>
+            <button (click)="onEdit(company)">Edit</button>
             <button (click)="onDelete(company)">Delete</button>
           </td>
         </tr>

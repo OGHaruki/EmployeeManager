@@ -51,13 +51,13 @@ public class CompanyControllerImpl implements CompanyController {
     }
 
     @Override
-    public ResponseEntity<String> addCompany(@RequestBody CompanyCreateRequest companyCreateRequest) {
+    public ResponseEntity<Void> addCompany(@RequestBody CompanyCreateRequest companyCreateRequest) {
         Company company = Company.builder().name(companyCreateRequest.getName()).sector(companyCreateRequest.getSector()).build();
         if(companyService.getCompanyByName(company.getName()).isPresent()) {
-            return ResponseEntity.badRequest().body("Company with this name already exists!");
+            return ResponseEntity.badRequest().build();
         } else {
             companyService.saveCompany(company);
-            return ResponseEntity.ok("Company added successfully!");
+            return ResponseEntity.ok().build();
         }
     }
 

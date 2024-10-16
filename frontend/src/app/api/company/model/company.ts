@@ -1,7 +1,7 @@
 import { UUID } from "crypto";
 
 export interface Company {
-    id: string;
+    id?: string;
     name: string;
     sector: string;
 }

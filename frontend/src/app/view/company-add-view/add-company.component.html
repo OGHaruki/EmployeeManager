@@ -1,21 +1,23 @@
-<article class="container">
-  <header><h2>Add a New Company</h2></header>
+<article class="add-company-container">
+  <header><h2>Add Company</h2></header>
 
-  
-  <form (ngSubmit)="onSubmit()" #companyForm="ngForm" class="company-form">
+  <form class="form-container" #form="ngForm" (ngSubmit)="onSubmit(newCompany)">
     <div class="form-group">
-      <label for="companyName">Company Name</label>
-      <input type="text" id="companyName" [(ngModel)]="newCompany.name" name="companyName" required>
+      <label for="name">Company Name:</label>
+      <input id="name" name="name" [(ngModel)]="newCompany.name" required class="form-control"/>
     </div>
 
     <div class="form-group">
-      <label for="companySector">Sector</label>
-      <input type="text" id="companySector" [(ngModel)]="newCompany.sector" name="companySector" required>
+      <label for="sector">Company Sector:</label>
+      <input id="sector" name="sector" [(ngModel)]="newCompany.sector" required class="form-control"/>
     </div>
 
-    <button type="submit" [disabled]="!companyForm.form.valid" class="btn-submit">Add Company</button>
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Add</button>
+      <button type="button" (click)="form.resetForm()" class="btn btn-secondary">Reset</button>
+    </div>
 
-    <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
-    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+    <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
   </form>
 </article>

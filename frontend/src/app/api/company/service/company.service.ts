@@ -21,7 +21,11 @@ export class CompanyService {
         return this.http.delete<void>(`/api/companies/${name}`);
     }
 
-    addCompany(company: Company): Observable<String> {
-        return this.http.put<String>('/api/companies', company);
+    addCompany(company: Company): Observable<void> {
+        return this.http.put<void>('/api/companies', company);
+    }
+
+    updateCompany(company: Company): Observable<void> {
+        return this.http.put<void>('/api/companies/' + company.name, company);
     }
 }

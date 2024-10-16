@@ -2,19 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { CompanyService } from '../../api/company/service/company.service';
 import { Company } from '../../api/company/model/company';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-company-list',
   standalone: true,
   templateUrl: './company-list.component.html',
   styleUrls: ['./company-list.component.css'],
-  imports: [CommonModule, RouterLink]
+  imports: [CommonModule]
 })
 export class CompanyListComponent implements OnInit {
   companies: Company[] = [];
 
-  constructor(private service: CompanyService) { }
+  constructor(private service: CompanyService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadCompanies();
@@ -24,6 +24,10 @@ export class CompanyListComponent implements OnInit {
     this.service.getCompanies().subscribe((companies) => {
       this.companies = companies.companies;
     });
+  }
+
+  onEdit(company: Company): void {
+    this.router.navigate(['/companies/edit', company.name]);
   }
 
   onDelete(company: Company): void {

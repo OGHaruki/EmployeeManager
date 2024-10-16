@@ -16,7 +16,7 @@ public interface CompanyController {
     ResponseEntity<CompanyResponse> getCompanyByName(@PathVariable String companyName);
 
     @PutMapping("/companies")
-    ResponseEntity<String> addCompany(CompanyCreateRequest companyCreateRequest);
+    ResponseEntity<Void> addCompany(CompanyCreateRequest companyCreateRequest);
 
     @DeleteMapping("/companies/{companyName}")
     ResponseEntity<Void> deleteCompany(@PathVariable String companyName);
