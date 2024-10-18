@@ -22,6 +22,6 @@ public interface CompanyController {
     ResponseEntity<Void> deleteCompany(@PathVariable String companyName);
 
     @PutMapping("/companies/{companyName}")
-    ResponseEntity<String> updateCompany(@PathVariable String companyName, @RequestBody CompanyUpdateRequest companyUpdateRequest);
+    ResponseEntity<Void> updateCompany(@PathVariable String companyName, @RequestBody CompanyUpdateRequest companyUpdateRequest);
 
 }

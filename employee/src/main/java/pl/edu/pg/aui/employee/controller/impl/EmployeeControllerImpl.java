@@ -98,7 +98,7 @@ public class EmployeeControllerImpl implements EmployeeController {
     }
 
     @Override
-    public ResponseEntity<String> addEmployee(@PathVariable String companyName, @RequestBody EmployeeCreateRequest employeeCreateRequest) {
+    public ResponseEntity<Void> addEmployee(@PathVariable String companyName, @RequestBody EmployeeCreateRequest employeeCreateRequest) {
         Optional<Company> companyOptional = companyService.getCompanyByName(companyName);
 
         if (companyOptional.isEmpty()) {
@@ -112,16 +112,16 @@ public class EmployeeControllerImpl implements EmployeeController {
                     .build();
             try {
                 employeeService.saveEmployee(employee);
-                return ResponseEntity.ok("Employee added successfully!");
+                return ResponseEntity.ok().build();
             } catch (Exception e) {
-                return ResponseEntity.status(500).body("Error while adding employee: " + e.getMessage());
+                return ResponseEntity.badRequest().build();
             }
         }
     }
 
 
     @Override
-    public ResponseEntity<String> deleteEmployee(@PathVariable String companyName, @PathVariable String employeeName) {
+    public ResponseEntity<Void> deleteEmployee(@PathVariable String companyName, @PathVariable String employeeName) {
         if(companyService.getCompanyByName(companyName).isEmpty()) {
             return ResponseEntity.notFound().build();
         } else {
@@ -135,13 +135,13 @@ public class EmployeeControllerImpl implements EmployeeController {
                 return ResponseEntity.notFound().build();
             } else {
                 employeeService.deleteEmployee(employee.get().getUuid());
-                return ResponseEntity.ok("Employee deleted successfully!");
+                return ResponseEntity.ok().build();
             }
         }
     }
 
     @Override
-    public ResponseEntity<String> updateEmployee(@PathVariable String companyName, @PathVariable String employeeName, @RequestBody EmployeeUpdateRequest employeeUpdateRequest) {
+    public ResponseEntity<Void> updateEmployee(@PathVariable String companyName, @PathVariable String employeeName, @RequestBody EmployeeUpdateRequest employeeUpdateRequest) {
         if(companyService.getCompanyByName(companyName).isEmpty()) {
             return ResponseEntity.notFound().build();
         } else {
@@ -157,7 +157,7 @@ public class EmployeeControllerImpl implements EmployeeController {
                 employee.get().setName(employeeUpdateRequest.getName());
                 employee.get().setSeniority(employeeUpdateRequest.getSeniority());
                 employeeService.saveEmployee(employee.get());
-                return ResponseEntity.ok("Employee updated successfully!");
+                return ResponseEntity.ok().build();
             }
         }
     }

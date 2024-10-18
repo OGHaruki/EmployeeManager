@@ -17,6 +17,10 @@ export class CompanyService {
         return this.http.get<Companies>('/api/companies');
     }
 
+    getCompanyByName(name: string): Observable<Company> {
+        return this.http.get<Company>('/api/companies/' + name);
+    }
+
     deleteCompany(name: string): Observable<void> {
         return this.http.delete<void>(`/api/companies/${name}`);
     }
@@ -25,7 +29,7 @@ export class CompanyService {
         return this.http.put<void>('/api/companies', company);
     }
 
-    updateCompany(company: Company): Observable<void> {
-        return this.http.put<void>('/api/companies/' + company.name, company);
+    updateCompany(name: string, request: Company): Observable<void> {
+        return this.http.put<void>('/api/companies/' + name, request);
     }
 }

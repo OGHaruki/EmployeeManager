@@ -26,6 +26,10 @@ export class CompanyListComponent implements OnInit {
     });
   }
 
+  viewDetails(company: Company): void {
+    this.router.navigate(['/companies/' + company.name + '/details']);
+  }
+
   onEdit(company: Company): void {
     this.router.navigate(['/companies/edit', company.name]);
   }

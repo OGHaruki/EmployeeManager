@@ -4,14 +4,15 @@
     <table *ngIf="companies">
       <thead>
         <tr>
-          <th>Category</th>
-          <th>Delete</th>
+          <th>Company</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let company of companies">
           <td>{{ company.name }}</td>
           <td>
+            <button (click)="viewDetails(company)">Details</button>
             <button (click)="onEdit(company)">Edit</button>
             <button (click)="onDelete(company)">Delete</button>
           </td>

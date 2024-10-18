@@ -73,7 +73,7 @@ public class CompanyControllerImpl implements CompanyController {
     }
 
     @Override
-    public ResponseEntity<String> updateCompany(String companyName, CompanyUpdateRequest companyUpdateRequest) {
+    public ResponseEntity<Void> updateCompany(String companyName, CompanyUpdateRequest companyUpdateRequest) {
         try {
             Optional<Company> company = companyService.getCompanyByName(companyName);
             if (company.isEmpty()) {
@@ -82,12 +82,12 @@ public class CompanyControllerImpl implements CompanyController {
                 company.get().setName(companyUpdateRequest.getName());
                 company.get().setSector(companyUpdateRequest.getSector());
                 companyService.updateCompany(company.get());
-                return ResponseEntity.ok("Company updated successfully!");
+                return ResponseEntity.ok().build();
             }
         } catch (Exception e) {
             // Log the exception
             e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred while updating the company.");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 }
