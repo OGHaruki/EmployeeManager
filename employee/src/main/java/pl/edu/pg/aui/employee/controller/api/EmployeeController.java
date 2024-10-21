@@ -18,7 +18,7 @@ public interface EmployeeController {
 
     @GetMapping("/companies/{companyName}/employees/{employeeName}")
     ResponseEntity<EmployeeResponse> getEmployeeByName(@PathVariable String companyName, @PathVariable String employeeName);
-    
+
     @PutMapping("/companies/{companyName}/employees")
     ResponseEntity<Void> addEmployee(@PathVariable String companyName, EmployeeCreateRequest employeeCreateRequest);
 
