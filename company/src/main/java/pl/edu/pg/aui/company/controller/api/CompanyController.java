@@ -16,12 +16,12 @@ public interface CompanyController {
     ResponseEntity<CompanyResponse> getCompanyByName(@PathVariable String companyName);
 
     @PutMapping("/companies")
-    ResponseEntity<String> addCompany(CompanyCreateRequest companyCreateRequest);
+    ResponseEntity<Void> addCompany(CompanyCreateRequest companyCreateRequest);
 
     @DeleteMapping("/companies/{companyName}")
-    ResponseEntity<String> deleteCompany(@PathVariable String companyName);
+    ResponseEntity<Void> deleteCompany(@PathVariable String companyName);
 
     @PutMapping("/companies/{companyName}")
-    ResponseEntity<String> updateCompany(@PathVariable String companyName, @RequestBody CompanyUpdateRequest companyUpdateRequest);
+    ResponseEntity<Void> updateCompany(@PathVariable String companyName, @RequestBody CompanyUpdateRequest companyUpdateRequest);
 
 }

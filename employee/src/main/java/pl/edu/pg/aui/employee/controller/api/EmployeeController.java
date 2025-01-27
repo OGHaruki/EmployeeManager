@@ -18,13 +18,13 @@ public interface EmployeeController {
 
     @GetMapping("/companies/{companyName}/employees/{employeeName}")
     ResponseEntity<EmployeeResponse> getEmployeeByName(@PathVariable String companyName, @PathVariable String employeeName);
-
+    
     @PutMapping("/companies/{companyName}/employees")
-    ResponseEntity<String> addEmployee(@PathVariable String companyName, EmployeeCreateRequest employeeCreateRequest);
+    ResponseEntity<Void> addEmployee(@PathVariable String companyName, EmployeeCreateRequest employeeCreateRequest);
 
     @DeleteMapping("/companies/{companyName}/employees/{employeeName}")
-    ResponseEntity<String> deleteEmployee(@PathVariable String companyName, @PathVariable String employeeName);
+    ResponseEntity<Void> deleteEmployee(@PathVariable String companyName, @PathVariable String employeeName);
 
     @PatchMapping("/companies/{companyName}/employees/{employeeName}")
-    ResponseEntity<String> updateEmployee(@PathVariable String companyName, @PathVariable String employeeName, EmployeeUpdateRequest employeeUpdateRequest);
+    ResponseEntity<Void> updateEmployee(@PathVariable String companyName, @PathVariable String employeeName, EmployeeUpdateRequest employeeUpdateRequest);
 }

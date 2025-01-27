@@ -1,8 +1,8 @@
 ### Get all companies
-GET http://localhost:8080/companies
+GET http://localhost:8080/api/companies
 
 ### Add new company
-PUT http://localhost:8080/companies
+PUT http://localhost:8080/api/companies
 Content-Type: application/json
 
 {
@@ -11,14 +11,14 @@ Content-Type: application/json
 }
 
 ### Get a company by name
-GET http://localhost:8080/companies/PKO
+GET http://localhost:8080/api/companies/PKO
 Accept: application/json
 
 ### Getting company by name that does not exist
-GET http://localhost:8080/companies/NotExistingCompany
+GET http://localhost:8080/api/companies/NotExistingCompany
 
 ### Updating company by name
-PUT http://localhost:8080/companies/Apple
+PUT http://localhost:8080/api/companies/Apple
 Content-Type: application/json
 
 {
@@ -27,15 +27,15 @@ Content-Type: application/json
 }
 
 ### Deleting company by name
-DELETE http://localhost:8080/companies/Zara
+DELETE http://localhost:8080/api/companies/Zara
 Accept: application/json
 
 ### Listing all employees of a company
-GET http://localhost:8080/companies/PKO/employees
+GET http://localhost:8080/api/companies/PKO/employees
 Accept: application/json
 
 ### Adding new employee to a company
-PUT http://localhost:8080/companies/PKO/employees
+PUT http://localhost:8080/api/companies/PKO/employees
 Content-Type: application/json
 
 {
@@ -44,7 +44,7 @@ Content-Type: application/json
 }
 
 ### Updating employee by name
-PATCH http://localhost:8080/companies/PKO/employees/Amelia%20Dombrowska
+PATCH http://localhost:8080/api/companies/PKO/employees/Amelia%20Dombrowska
 Content-Type: application/json
 
 {
@@ -54,7 +54,7 @@ Content-Type: application/json
 }
 
 ### Deleting employee by name
-DELETE http://localhost:8080/companies/PKO/employees/Jan%20Kowalski
+DELETE http://localhost:8080/api/companies/PKO/employees/Jan%20Kowalski
 Accept: application/json
 
 

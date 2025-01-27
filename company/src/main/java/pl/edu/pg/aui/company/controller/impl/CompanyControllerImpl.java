@@ -51,29 +51,29 @@ public class CompanyControllerImpl implements CompanyController {
     }
 
     @Override
-    public ResponseEntity<String> addCompany(@RequestBody CompanyCreateRequest companyCreateRequest) {
+    public ResponseEntity<Void> addCompany(@RequestBody CompanyCreateRequest companyCreateRequest) {
         Company company = Company.builder().name(companyCreateRequest.getName()).sector(companyCreateRequest.getSector()).build();
         if(companyService.getCompanyByName(company.getName()).isPresent()) {
-            return ResponseEntity.badRequest().body("Company with this name already exists!");
+            return ResponseEntity.badRequest().build();
         } else {
             companyService.saveCompany(company);
-            return ResponseEntity.ok("Company added successfully!");
+            return ResponseEntity.ok().build();
         }
     }
 
     @Override
-    public ResponseEntity<String> deleteCompany(String companyName) {
+    public ResponseEntity<Void> deleteCompany(String companyName) {
         Company company = companyService.getCompanyByName(companyName).orElse(null);
         if(company == null) {
             return ResponseEntity.notFound().build();
         } else {
             companyService.deleteCompany(company.getUuid());
-            return ResponseEntity.ok("Company deleted successfully!");
+            return ResponseEntity.noContent().build();
         }
     }
 
     @Override
-    public ResponseEntity<String> updateCompany(String companyName, CompanyUpdateRequest companyUpdateRequest) {
+    public ResponseEntity<Void> updateCompany(String companyName, CompanyUpdateRequest companyUpdateRequest) {
         try {
             Optional<Company> company = companyService.getCompanyByName(companyName);
             if (company.isEmpty()) {
@@ -82,12 +82,12 @@ public class CompanyControllerImpl implements CompanyController {
                 company.get().setName(companyUpdateRequest.getName());
                 company.get().setSector(companyUpdateRequest.getSector());
                 companyService.updateCompany(company.get());
-                return ResponseEntity.ok("Company updated successfully!");
+                return ResponseEntity.ok().build();
             }
         } catch (Exception e) {
             // Log the exception
             e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred while updating the company.");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 }

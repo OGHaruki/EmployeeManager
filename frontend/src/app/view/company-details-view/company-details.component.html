@@ -1,0 +1,29 @@
+<article *ngIf="company">
+  <header><h2>{{ company.name }}</h2></header>
+  <p>Sector: {{ company.sector }}</p>
+
+  <button (click)="addEmployee()">Add Employee</button>
+
+  <h3>Employees</h3>
+  <table *ngIf="employees.length > 0">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Seniority</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.seniority }}</td>
+        <td>
+          <button (click)="deleteEmployee(company, employee)">Delete</button>
+          <button (click)="editEmployee(employee.name)">Edit</button>
+          <button (click)="employeeDetails(employee.name)">Details</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p *ngIf="employees.length === 0">No employees found.</p>
+</article>
