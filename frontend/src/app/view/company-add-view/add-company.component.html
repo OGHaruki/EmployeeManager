@@ -1,0 +1,23 @@
+<article class="add-company-container">
+  <header><h2>Add Company</h2></header>
+
+  <form class="form-container" #form="ngForm" (ngSubmit)="onSubmit(newCompany)">
+    <div class="form-group">
+      <label for="name">Company Name:</label>
+      <input id="name" name="name" [(ngModel)]="newCompany.name" required class="form-control"/>
+    </div>
+
+    <div class="form-group">
+      <label for="sector">Company Sector:</label>
+      <input id="sector" name="sector" [(ngModel)]="newCompany.sector" required class="form-control"/>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Add</button>
+      <button type="button" (click)="form.resetForm()" class="btn btn-secondary">Reset</button>
+    </div>
+
+    <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  </form>
+</article>

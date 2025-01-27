@@ -1,0 +1,15 @@
+<article>
+    <header><h2>Add Employee</h2></header>
+  
+    <form (ngSubmit)="onSubmit()" #employeeForm="ngForm">
+      <div>
+        <label for="name">Name:</label>
+        <input id="name" name="name" [(ngModel)]="newEmployee.name" required>
+      </div>
+      <div>
+        <label for="seniority">Seniority:</label>
+        <input id="seniority" name="seniority" [(ngModel)]="newEmployee.seniority" required>
+      </div>
+      <button type="submit">Add Employee</button>
+    </form>
+  </article>

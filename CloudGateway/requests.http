@@ -1,0 +1,60 @@
+### Get all companies
+GET http://localhost:8080/api/companies
+
+### Add new company
+PUT http://localhost:8080/api/companies
+Content-Type: application/json
+
+{
+  "name": "Allstar",
+  "sector": "Sport"
+}
+
+### Get a company by name
+GET http://localhost:8080/api/companies/PKO
+Accept: application/json
+
+### Getting company by name that does not exist
+GET http://localhost:8080/api/companies/NotExistingCompany
+
+### Updating company by name
+PUT http://localhost:8080/api/companies/Apple
+Content-Type: application/json
+
+{
+  "name": "Google",
+  "sector": "IT"
+}
+
+### Deleting company by name
+DELETE http://localhost:8080/api/companies/Zara
+Accept: application/json
+
+### Listing all employees of a company
+GET http://localhost:8080/api/companies/PKO/employees
+Accept: application/json
+
+### Adding new employee to a company
+PUT http://localhost:8080/api/companies/PKO/employees
+Content-Type: application/json
+
+{
+  "name": "Amelia Dombrowska",
+  "seniority": "Junior"
+}
+
+### Updating employee by name
+PATCH http://localhost:8080/api/companies/PKO/employees/Amelia%20Dombrowska
+Content-Type: application/json
+
+{
+  "name": "Jan Kowalski",
+  "seniority": "Senior"
+
+}
+
+### Deleting employee by name
+DELETE http://localhost:8080/api/companies/PKO/employees/Jan%20Kowalski
+Accept: application/json
+
+
