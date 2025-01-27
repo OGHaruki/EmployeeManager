@@ -18,7 +18,7 @@ public class CompanyApplication {
 	@Qualifier("employeeRestTemplate")
 	public RestTemplate employeeRestTemplate() {
 		return new RestTemplateBuilder()
-				.rootUri("http://localhost:8082/api")
+				.rootUri("http://employee-service:8083/api")
 				.build();
 	}
 }
